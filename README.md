@@ -1,0 +1,3 @@
+- https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
+- https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
+- https://medium.com/eightshapes-llc/light-dark-9f8ea42c9081

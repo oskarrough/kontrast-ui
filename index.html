@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="style.css"></link>
+<meta charset="utf8">
+
+<body>
+
+<menu>
+	<fieldset>
+		<legend>Kontrast UI controls</legend>
+		<p>
+			theme
+			<button onclick="setTheme('light')">light</button>
+			<button onclick="setTheme('dark')">dark</button>
+			<button onclick="setTheme('contrast')">high contrast</button>
+		</p>
+		<p>
+			<label>hue
+				<input type="color" id="hue" value="#197fe6">
+			</label>
+		</p>
+		<p>
+			<label>size
+				<input type="range" id="size">
+			</label>
+		</p>
+	</fieldset>
+</menu>
+
+<main>
+	<h1>Testing 123…</h1>
+	<p>Use the menu above to set a class on the HTML element. This class will change the custom CSS properties used to style the page.</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui odit dicta repellat consequatur, consectetur, perferendis placeat expedita iusto, ullam accusamus maxime beatae dolores assumenda. Repudiandae, ipsum. Debitis dolore autem enim! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio officiis omnis eius inventore laboriosam reiciendis laudantium sed laborum repellat obcaecati. Recusandae magni sed eum dolores labore eveniet iste voluptas esse!</p>
+	<form>
+		<input placeholder="Enter nothing…">
+		<button>Click me</button>
+	</form>
+	<article class="Card">
+		<h2>Normal card</h2>
+		<p>I'm a card</p>
+	</article>
+	<article class="Card Card--accent">
+		<h2>Card with accent</h2>
+		<p>I'm a card</p>
+	</article>
+</main>
+
+<script src="utils.js"></script>
+<script>
+	const root = document.documentElement
+	const inputs = [].slice.call(document.querySelectorAll('menu input'))
+
+	inputs.forEach(input => input.addEventListener('change', handleUpdate))
+
+	function handleUpdate(e) {
+		console.log(e, this.value)
+
+		if (this.id === 'hue') {
+			let hue = hexToHue(this.value)
+			root.style.setProperty(`--${this.id}`, `${hue}`)
+		} else {
+			root.style.setProperty(`--${this.id}`, `${this.value}px`)
+		}
+	}
+
+	function setTheme(theme) {
+		root.setAttribute('data-theme', theme)
+	}
+</script>
+
+</body>
